@@ -29,7 +29,7 @@ io.on('connection', (socket) => {
         cmd.get(
             'ipconfig',
             function(err, data, stderr){
-               console.log('info about nmap: ',data)
+               console.log('info about ip: ',data)
               io.to(socket.id).emit('recv_msg', data)
             }
         );
