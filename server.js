@@ -14,9 +14,9 @@ io.on('connection', (socket) => {
     console.log("New socket formed from " + socket.id)
     socket.emit('connected')
     
-    socket.on('send_msg', () => {
+    socket.on('send_msg', (info) => {
         cmd.get(
-            'nmap',
+            `nmap -v ${info.ipadd}`,
             function(err, data, stderr){
                console.log('info about nmap: ',data)
               io.to(socket.id).emit('recv_msg', data)
