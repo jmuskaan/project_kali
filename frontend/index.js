@@ -20,9 +20,7 @@ $(function () {
     })
     socket.on('recv_msg', function (data) {
         const x=JSON.stringify(data)
-        var formattedString = x.split("\\n").join('<br/>')  
-        var p= formattedString.split("\\r")
- 
-        msglist.html(p);
+        const v=x.split("\\n").join("<br/>")
+        msglist.html(v);
     })
 })
