@@ -16,9 +16,9 @@ io.on('connection', (socket) => {
     
     socket.on('send_msg', () => {
         cmd.get(
-            'pwd',
+            'nmap',
             function(err, data, stderr){
-               console.log('the current working dir is : ',data)
+               console.log('info about nmap: ',data)
               io.to(socket.id).emit('recv_msg', data)
             }
         );
@@ -27,9 +27,9 @@ io.on('connection', (socket) => {
     )
     socket.on('send_msg2', () => {
         cmd.get(
-            'ipconfig',
+            'dnsmap',
             function(err, data, stderr){
-               console.log('info about ip: ',data)
+               console.log('info about dnsmap: ',data)
               io.to(socket.id).emit('recv_msg', data)
             }
         );
