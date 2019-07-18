@@ -7,12 +7,20 @@ $(function () {
     let sendbtn = $('#sendmsg')
     let sendbtn2 = $('#sendmsg2')
     let msglist = $('#msglist')
+    let ip=$('#ip')
+    let url=$('#url') 
+    let send=$('#send')
+    let ipadd=''
     sendbtn.click(function () {
-        socket.emit('send_msg', {
-     
-        })
+       ip.show();
+       
     })
-
+    send.click(function(){
+        ipadd=url.val();
+        socket.emit('send_msg', {
+            ipadd: ipadd
+            })
+    })
     sendbtn2.click(function () {
         socket.emit('send_msg2', {
 
@@ -22,5 +30,6 @@ $(function () {
         const x=JSON.stringify(data)
         const v=x.split("\\n").join("<br/>")
         msglist.html(v);
+        ip.hide();
     })
 })
